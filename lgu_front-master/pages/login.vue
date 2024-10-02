@@ -1,0 +1,102 @@
+<template>
+  <div class="container w-full h-screen flex items-center justify-center bg-white">
+    <Card class="w-full max-w-[350px] shadow-2xl border border-gray-200 bg-white rounded-2xl">
+      <CardHeader class="flex flex-col items-center">
+        <img src="/pages/logo.png" alt="Logo" class="w-44 h-44 mb-4" />
+        <CardTitle>LGU MAYOYAO</CardTitle>
+        <CardDescription>Please Log In</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form @submit.prevent="login">
+          <div class="grid items-center w-full gap-4">
+            <div class="flex flex-col space-y-1.5">
+              <Label for="name">Email</Label>
+              <Input v-model="email" id="name" placeholder="Enter Email" required />
+            </div>
+            <div class="flex flex-col space-y-1.5">
+              <Label for="password">Password</Label>
+              <Input type="password" v-model="password" id="password" placeholder="Enter Password" required />
+            </div>
+            <div class="flex justify-between">
+              <Button
+                type="submit"
+                class="flex items-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+              >
+                <i class="fas fa-sign-in-alt mr-2"></i> Login
+              </Button>
+              <Button
+                type="button"
+                @click="goToRegister"
+                class="flex items-center bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+              >
+                <i class="fas fa-user-plus mr-2"></i> Register
+              </Button>
+            </div>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter class="flex justify-center px-6 pb-6">
+        <Button
+          type="button"
+          @click="goToTracker"
+          class="flex items-center bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
+        >
+          <i class="fas fa-file-alt mr-2"></i> Document Tracker
+        </Button>
+      </CardFooter>
+    </Card>
+  </div>
+</template>
+
+<script setup>
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
+import { ref } from 'vue';
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const email = ref('');
+const password = ref('');
+
+const { $jwtAuth } = useNuxtApp()
+
+async function login() {
+  try {
+    await $jwtAuth.login(
+      {
+        email: email.value,
+        password: password.value
+      },
+      (data) => {
+        console.log(data)
+        window.location.replace('/')
+      }
+    )
+  } catch (e) {
+    // Handle error
+  }
+}
+
+const goToRegister = () => {
+  router.push('/register') 
+}
+
+const goToTracker = () => {
+  router.push('/document_tracker') 
+}
+
+definePageMeta({
+  middleware: 'guest',
+  layout: false
+})
+</script>
