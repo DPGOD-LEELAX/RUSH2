@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {ref, onMounted} from 'vue'
 import { DonutChart } from '@/components/ui/chart-donut'
+import { BarChart } from '@/components/ui/chart-bar'
 
 import {
   Card,
@@ -11,7 +12,6 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-import { BarChart } from '@/components/ui/chart-bar'
 
 const data = [
   { name: 'Jan', downloads: Math.floor(Math.random() * 5000) + 1000, uploads: Math.floor(Math.random() * 3000) + 500 },
@@ -45,6 +45,7 @@ const document_status_count = ref({
 onMounted(async () => {
   await getUserCount()
   await getDocumentStatusCount()
+  console.log(data)
 })
 
 const getUserCount = async () => {
@@ -101,14 +102,13 @@ const getDocumentStatusCount= async () => {
       </Card>
     </div>
     <div>
-      <Card class="w-[600px]"">
+      <Card class="w-[600px]">
         <CardHeader>
           <CardTitle>Document Uploads and Downloads</CardTitle>
           <CardDescription>This shows number of uploads and downloads on a monthly basis</CardDescription>
         </CardHeader>
         <CardContent class="flex justify-center">
             <BarChart
-              class="border"
               :data="data"
               index="name"
               :categories="['downloads', 'uploads']"

@@ -57,7 +57,7 @@ onMounted(() => {
               class="flex items-center gap-3 rounded-lg px-3 py-3 transition-all hover:text-primary"
               :class="{ 'bg-muted text-primary' : isIndexRoute, 'text-muted-foreground': !isIndexRoute, 'text-white': isIndexRoute }"
             >
-              <LayoutDashboard class="h-5 w-5" />
+              <LayoutDashboard class="h-5 w-5" :color="isIndexRoute ? '#1F305E' : 'white'"/>
               <span :class="{'text-white': !isIndexRoute, 'text-primary': isIndexRoute}">Dashboard</span>
             </NuxtLink>
             <NuxtLink
@@ -65,7 +65,7 @@ onMounted(() => {
               class="flex items-center gap-3 rounded-lg px-3 py-3 transition-all hover:text-primary"
               :class="{ 'bg-muted text-primary' : isFMRoute, 'text-muted-foreground': !isFMRoute, 'text-white': isFMRoute }"
             >
-              <Folder class="h-5 w-5" />
+              <Folder class="h-5 w-5" :color="isFMRoute ? '#1F305E' : 'white'"/>
               <span :class="{'text-white': !isFMRoute, 'text-primary': isFMRoute}">File Manager</span>
             </NuxtLink>
           </nav>
