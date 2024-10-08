@@ -12,6 +12,8 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
+import { UsersRound,FilePenLine,FileDown,FileUp,File } from 'lucide-vue-next'
+
 
 const data = [
   { name: 'Jan', downloads: Math.floor(Math.random() * 5000) + 1000, uploads: Math.floor(Math.random() * 3000) + 500 },
@@ -73,38 +75,86 @@ const getDocumentStatusCount= async () => {
       Dashboard
     </h1>
   </div>
-  <div class="flex flex-1 gap-4 p-5 rounded-lg border border-dashed shadow-sm">
-    <div class="">
-      <Card>
-        <CardHeader>
-          <CardTitle>Document Count</CardTitle>
-          <CardDescription>This shows document count based on status</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <DonutChart
-            index="name"
-            :category="'count'"
-            :data="document_status_count.status_counts"
-            :colors="['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple']"
-          />
-        </CardContent>
-      </Card>
+  <div class="flex flex-1 gap-4 p-5 rounded-lg border border-dashed shadow-sm grid grid-cols-8 bg-gray-50">
+    <div class="grid grid-cols-subgrid gap-4 col-span-8">
+      <div class="col-span-2">
+        <Card class="drop-shadow-md">
+          <CardHeader>
+            <CardTitle>Document Count</CardTitle>
+            <CardDescription>This shows document count based on status</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DonutChart
+              index="name"
+              :category="'count'"
+              :data="document_status_count.status_counts"
+              :colors="['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple']"
+            />
+          </CardContent>
+        </Card>
+      </div>
+      <div class="col-span-1">
+        <Card class="drop-shadow-md">
+          <CardHeader>
+            <CardTitle>User Count</CardTitle>
+            <CardDescription>This shows number of users</CardDescription>
+          </CardHeader>
+          <CardContent class="text-3xl font-bold flex items-center gap-4 justify-center">
+            <UsersRound class="w-12 h-12"/>
+            {{ user_count.user_count }}
+          </CardContent>
+        </Card>
+      </div>
+      <div class="col-span-5">
+        <Card class="drop-shadow-md">
+          <CardHeader>
+            <CardTitle class="flex gap-4 items-center"><FilePenLine class="w-8 h-8"/>Latest Document Update</CardTitle>
+            <CardDescription>This shows the latest update on a document</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Card>
+              <CardContent class="flex items-center mt-5 font-medium gap-4">
+                <File class="w-6 h-6"/> Document Name
+              </CardContent>
+            </Card>
+          </CardContent>
+        </Card>
+      </div>
     </div>
-    <div class="">
-      <Card>
-        <CardHeader>
-          <CardTitle>User Count</CardTitle>
-          <CardDescription>This shows number of users</CardDescription>
-        </CardHeader>
-        <CardContent>
-          {{ user_count.user_count }}
-        </CardContent>
-      </Card>
+    <div class="col-span-4">
+      <Card class="drop-shadow-md">
+          <CardHeader>
+            <CardTitle class="flex gap-4 items-center"><FileUp class="w-8 h-8"/>Latest Document Uploaded</CardTitle>
+            <CardDescription>This shows the most recent uploaded document</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Card>
+              <CardContent class="flex items-center mt-5 font-medium gap-4">
+                <File class="w-6 h-6"/> Document Name
+              </CardContent>
+            </Card>
+          </CardContent>
+        </Card>
     </div>
-    <div>
-      <Card class="w-[600px]">
+    <div class="col-span-4">
+      <Card class="drop-shadow-md">
+          <CardHeader>
+            <CardTitle class="flex gap-4 items-center"><FileDown class="w-8 h-8"/>Latest Document Downloaded</CardTitle>
+            <CardDescription>This shows the most recent downloaded document</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Card>
+              <CardContent class="flex items-center mt-5 font-medium gap-4">
+                <File class="w-6 h-6"/> Document Name
+              </CardContent>
+            </Card>
+          </CardContent>
+        </Card>
+    </div>
+    <div class="col-span-8">
+      <Card class="drop-shadow-md">
         <CardHeader>
-          <CardTitle>Document Uploads and Downloads</CardTitle>
+          <CardTitle>Total Document Upload and Download</CardTitle>
           <CardDescription>This shows number of uploads and downloads on a monthly basis</CardDescription>
         </CardHeader>
         <CardContent class="flex justify-center">
@@ -119,6 +169,7 @@ const getDocumentStatusCount= async () => {
               }"
               :rounded-corners="4"
               :colors="['red','blue']"
+              :show-x-axis="true"
             />
         </CardContent>
       </Card>

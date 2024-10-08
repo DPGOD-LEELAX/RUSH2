@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, computed, onMounted } from 'vue'
     import AddFileDialog from '@/components/modals/file_manager/add-file.vue'
     import EditFileDialog from '@/components/modals/file_manager/edit-file.vue'
     import ViewFileDialog from '@/components/modals/file_manager/view-file.vue'
@@ -36,7 +36,8 @@
         CheckCheck,
         CircleDashed,
         FileMinus,
-        Archive
+        Archive,
+        Printer // Import Printer icon for the print button
     } from 'lucide-vue-next'
 
     const filter = ref('')
@@ -112,10 +113,10 @@
     }
 
     const handleSearch = () => {
-        // Trigger search manually when button is clicked
         console.log('Searching for:', searchTerm.value)
     }
 </script>
+
 <template>
     <div class="flex items-center justify-between">
       <h1 class="text-lg font-semibold md:text-2xl">File Manager</h1>
@@ -220,11 +221,22 @@
                   </DialogTrigger>
                   <ArchiveFileDialog :data="file.id"></ArchiveFileDialog>
                 </Dialog>
+                <Button @click="printDocument(file.id)" class="bg-purple-500 h-8 w-8 hover:bg-purple-600" size="icon">
+                  <Printer />
+                </Button>
+                <!-- View Button -->
+                <Dialog>
+                  <DialogTrigger>
+                    <Button @click="setEditId(file.id)" class="bg-green-500 h-8 w-8 hover:bg-green-600" size="icon">
+                      <Eye />
+                    </Button>
+                  </DialogTrigger>
+                  <ViewFileDialog :data="file.id"></ViewFileDialog>
+                </Dialog>
               </div>
             </TableCell>
           </TableRow>
         </TableBody>
       </Table>
     </div>
-  </template>
-  
+</template>

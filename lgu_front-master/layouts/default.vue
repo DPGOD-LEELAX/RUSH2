@@ -5,6 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { useRoute } from 'vue-router'
 import { ref, watch, onMounted } from 'vue'
+import imgSRC from '~/public/logo.png'
 
 const { $jwtAuth } = useNuxtApp()
 const { user, loggedIn } = useJwtAuth()
@@ -45,9 +46,8 @@ onMounted(() => {
       <div class="flex h-full max-h-screen flex-col gap-2">
         <div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <a href="/" class="flex items-center gap-2 font-semibold">
-            <Package2 class="h-6 w-6" />
-            <p class="text-2xl text-white">MAYOYAO</p>
-            <p class="text-2xl text-white">LGU</p>
+            <img :src="imgSRC" class="w-6 h-6" alt="LGU MAYOYAO LOGO">
+            <p class="text-2xl text-white">MAYOYAO LGU</p>
           </a>
         </div>
         <div class="flex-1">
