@@ -41,17 +41,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-    <div class="hidden border-r md:block" style="background-color: #1F305E;">
+  <div class="font-primary grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+    <div class="hidden border-r md:block bg-gradient-to-br from-[#12063b] to-[#09555c]">
       <div class="flex h-full max-h-screen flex-col gap-2">
-        <div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+        <div class="flex h-14 items-center border-b px-4 lg:h-[120px] lg:px-6">
           <a href="/" class="flex items-center gap-2 font-semibold">
-            <img :src="imgSRC" class="w-6 h-6" alt="LGU MAYOYAO LOGO">
-            <p class="text-2xl text-white">MAYOYAO LGU</p>
+            <img :src="imgSRC" class="w-24 h-24" alt="LGU MAYOYAO LOGO">
+            <p class="text-2xl text-white text-center">MAYOYAO LGU</p>
           </a>
         </div>
         <div class="flex-1">
-          <nav class="grid items-start px-2 text-lg font-medium lg:px-4" style="background-color: #1F305E;">
+          <nav class="grid items-start px-2 text-2xl font-medium lg:px-4">
             <NuxtLink
               to="/"
               class="flex items-center gap-3 rounded-lg px-3 py-3 transition-all hover:text-primary"
@@ -73,7 +73,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex flex-col">
-      <header class="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+      <header class="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[80px] lg:px-6">
         <Sheet>
           <SheetTrigger as-child>
             <Button
@@ -119,13 +119,13 @@ onMounted(() => {
           </SheetContent>
         </Sheet>
         <div class="w-1/4 mr-auto">
-          <p class="font-bold lg:text-xl md:text-md">Greetings!</p>
-          <p class="lg:text-sm md:text-xs" v-if="loggedIn">{{ user.username }}</p>
+          <p class="font-bold lg:text-2xl md:text-md">Greetings!</p>
+          <p class="lg:text-lg md:text-sm" v-if="loggedIn">{{ user.username }}</p>
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger as-child>
             <Button variant="secondary" size="icon" class="rounded-full">
-              <CircleUser class="h-5 w-5" />
+              <CircleUser class="h-8 w-8" />
               <span class="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>

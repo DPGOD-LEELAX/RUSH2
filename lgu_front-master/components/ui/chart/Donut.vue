@@ -20,7 +20,7 @@
         :x="center"
         :y="center"
         class="text-center"
-        font-size="5"
+        font-size="10"
         text-anchor="middle"
         dominant-baseline="middle"
       >

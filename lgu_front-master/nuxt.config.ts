@@ -34,4 +34,7 @@ export default defineNuxtConfig({
       logout: '/logout' // Where to redirect if user is logged in and accesses a guest-only route 
     }
   },
+  css: [
+    '@/assets/css/tailwind.css',
+  ]
 })

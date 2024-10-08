@@ -12,7 +12,26 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-import { UsersRound,FilePenLine,FileDown,FileUp,File } from 'lucide-vue-next'
+import { 
+  UsersRound,
+  FilePenLine,
+  FileDown,
+  FileUp,
+  File,
+  CircleUserRound,
+  Files,
+  FileStack
+} from 'lucide-vue-next'
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 
 
 const data = [
@@ -80,7 +99,7 @@ const getDocumentStatusCount= async () => {
       <div class="col-span-2">
         <Card class="drop-shadow-md">
           <CardHeader>
-            <CardTitle>Document Count</CardTitle>
+            <CardTitle class="flex items-center gap-4"><Button size="icon"><FileStack class="w-8 h-8"/></Button>Document Count</CardTitle>
             <CardDescription>This shows document count based on status</CardDescription>
           </CardHeader>
           <CardContent>
@@ -93,10 +112,10 @@ const getDocumentStatusCount= async () => {
           </CardContent>
         </Card>
       </div>
-      <div class="col-span-1">
-        <Card class="drop-shadow-md">
+      <div class="col-span-2">
+        <Card class="drop-shadow-md h-full">
           <CardHeader>
-            <CardTitle>User Count</CardTitle>
+            <CardTitle class="flex items-center gap-4"><CircleUserRound class="w-8 h-8"/>Total Users</CardTitle>
             <CardDescription>This shows number of users</CardDescription>
           </CardHeader>
           <CardContent class="text-3xl font-bold flex items-center gap-4 justify-center">
@@ -105,8 +124,8 @@ const getDocumentStatusCount= async () => {
           </CardContent>
         </Card>
       </div>
-      <div class="col-span-5">
-        <Card class="drop-shadow-md">
+      <div class="col-span-4">
+        <Card class="drop-shadow-md h-full">
           <CardHeader>
             <CardTitle class="flex gap-4 items-center"><FilePenLine class="w-8 h-8"/>Latest Document Update</CardTitle>
             <CardDescription>This shows the latest update on a document</CardDescription>
@@ -154,7 +173,7 @@ const getDocumentStatusCount= async () => {
     <div class="col-span-8">
       <Card class="drop-shadow-md">
         <CardHeader>
-          <CardTitle>Total Document Upload and Download</CardTitle>
+          <CardTitle class="flex items-center gap-4"><Files class="w-8 h-8"/>Total Document Upload and Download</CardTitle>
           <CardDescription>This shows number of uploads and downloads on a monthly basis</CardDescription>
         </CardHeader>
         <CardContent class="flex justify-center">
@@ -171,6 +190,46 @@ const getDocumentStatusCount= async () => {
               :colors="['red','blue']"
               :show-x-axis="true"
             />
+        </CardContent>
+      </Card>
+    </div>
+    <div class="col-span-4">
+      <Card class="drop-shadow-md">
+        <CardHeader>
+          <CardTitle class="flex items-center gap-4"><CircleUserRound class="w-8 h-8"/>Active Users</CardTitle>
+        </CardHeader>
+        <CardContent> 
+          <Table>
+            <TableCaption>A list of active users</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead class="w-[150px]">
+                  Username
+                </TableHead>
+                <TableHead>First Name</TableHead>
+                <TableHead>Last Name</TableHead>
+                <TableHead>
+                  Role
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  juanito
+                </TableCell>
+                <TableCell>
+                  Juan
+                </TableCell>
+                <TableCell>
+                  Dela Cruz
+                </TableCell>
+                <TableCell>
+                  Admin
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </CardContent>
       </Card>
     </div>
