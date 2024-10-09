@@ -2,7 +2,7 @@
   <div class="container w-full h-screen flex items-center justify-center bg-white">
     <Card class="w-full max-w-[350px] shadow-2xl border border-gray-200 bg-white rounded-2xl">
       <CardHeader class="flex flex-col items-center">
-        <img src="/pages/logo.png" alt="Logo" class="w-44 h-44 mb-4" />
+        <img :src="imgSRC" alt="Logo" class="w-44 h-44 mb-4" />
         <CardTitle>LGU MAYOYAO</CardTitle>
         <CardDescription>Please Log In</CardDescription>
       </CardHeader>
@@ -62,6 +62,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { ref } from 'vue';
 import { useRouter } from 'vue-router'
+import imgSRC from '@/public/logo.png'
 
 const router = useRouter()
 

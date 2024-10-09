@@ -183,7 +183,7 @@
             <TableCell class="font-medium">{{ file.title }}</TableCell>
             <TableCell>{{ file.file_type }}</TableCell>
             <TableCell>{{ file.status_display }}</TableCell>
-            <TableCell>{{ file.document_type_display }}</TableCell>
+            <TableCell>{{ file.document_type }}</TableCell>
             <TableCell>{{ file.to_username }}</TableCell>
             <TableCell>{{ file.from_username }}</TableCell>
             <TableCell>{{ file.reference_number }}</TableCell>
