@@ -103,7 +103,7 @@
             )
         }
         return files.value.filter(file =>
-            file.reference_number.toString().toLowerCase().includes(searchTerm.value.toLowerCase())
+            file.title.toString().toLowerCase().includes(searchTerm.value.toLowerCase())
         )
     })
 
