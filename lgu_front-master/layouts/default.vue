@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CircleUser, Menu, Package2, LayoutDashboard, Folder, Building, FileUp } from 'lucide-vue-next'
+import { CircleUser, Menu, Package2, LayoutDashboard, Folder, Building, FileUp, Settings, Info, LogOut } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -129,13 +129,13 @@ onMounted(() => {
               <span class="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" class="w-[200px]">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuItem class="flex gap-1 items-center"><Button size="icon" class="w-7 h-7 rounded-full"><Settings class="w-6 h-6"/> </Button>Settings</DropdownMenuItem>
+            <DropdownMenuItem class="flex gap-1 items-center"><Button size="icon" class="w-7 h-7 rounded-full"><Info class="w-6 h-6"/></Button>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem @click="logout">Logout</DropdownMenuItem>
+            <DropdownMenuItem class="flex gap-1 items-center" @click="logout"><Button size="icon" class="w-7 h-7 rounded-full"><LogOut class="w-6 h-6"/></Button>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
